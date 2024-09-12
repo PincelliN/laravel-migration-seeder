@@ -8,7 +8,7 @@ use App\Models\trains;
 class PageController extends Controller
 {
     public function index(){
-        $trains= trains::All();
+        $trains= trains::whereYear('giorno_di_partenza',[2024])->orderby('giorno_di_partenza')->get();;
         return view('home',compact('trains'));
     }
 

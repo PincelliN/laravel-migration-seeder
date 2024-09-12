@@ -16,6 +16,7 @@
                     <th scope="col">Giorno di Partenza</th>
                     <th scope="col">Partenza</th>
                     <th scope="col">Arrivo</th>
+                    <th scope="col">Binario</th>
                     <th scope="col">Codice</th>
                     <th scope="col">N. carrozze</th>
                     <th scope="col">Cancellato</th>
@@ -32,6 +33,7 @@
                         <td>{{ $train->giorno_di_partenza }}</td>
                         <td>{{ $train->partenza }}</td>
                         <td>{{ $train->arrivo }}</td>
+                        <td>{{ $train->binario }}</td>
                         <td>{{ $train->codice }}</td>
                         <td>{{ $train->n_carroze }}</td>
                         <td>{{ $train->cancellato }}</td>
