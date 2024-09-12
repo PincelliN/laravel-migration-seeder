@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('trains', function (Blueprint $table) {
             $table->id();
             $table->char('azienda');
-            $table->char('stazione di partenza');
-            $table->char('stazione di arrivo');
+            $table->char('stazione_di_partenza');
+            $table->char('stazione_di_arrivo');
             $table->time('partenza');
             $table->time('arrivo');
             $table->string('codice',10);

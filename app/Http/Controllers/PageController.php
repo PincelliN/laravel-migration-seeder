@@ -8,10 +8,12 @@ use App\Models\trains;
 class PageController extends Controller
 {
     public function index(){
-        return view('home');
+        $trains= trains::All();
+        return view('home',compact('trains'));
     }
 
-    public function treni(){
-        return view('Train');
+    public function treni($id){
+        $train=trains::find($id);
+        return view('Train',compact('train'));
     }
 }

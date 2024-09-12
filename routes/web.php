@@ -20,4 +20,4 @@ use App\Http\Controllers\PageController;
 })->name('home'); */
 
 Route::get('/',[PageController::class,'index'])->name('home');
-Route::get('/treni',[PageController::class,'treni'])->name('train');
+Route::get('/treni/{id}',[PageController::class,'treni'])->name('train');
