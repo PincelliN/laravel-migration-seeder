@@ -22,7 +22,8 @@
                 <li class="list-group-item d-flex justify-content-between"><strong>ORA DI
                         ARRIVO:</strong><i>{{ $train->arrivo }}</i></li>
                 <li class="list-group-item d-flex justify-content-between">
-                    <strong>BINARIO:</strong><i>{{ $train->binario }}</i></li>
+                    <strong>BINARIO:</strong><i>{{ $train->binario }}</i>
+                </li>
                 <li class="list-group-item d-flex justify-content-between"><strong>CODICE
                         TRENO:</strong><i>{{ $train->codice }}</i></li>
                 <li class="list-group-item d-flex justify-content-between">

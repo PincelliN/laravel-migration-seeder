@@ -21,3 +21,4 @@ use App\Http\Controllers\PageController;
 
 Route::get('/',[PageController::class,'index'])->name('home');
 Route::get('/treni/{id}',[PageController::class,'treni'])->name('train');
+Route::get('/partenze',[PageController::class,'treni_in_partenza'])->name('partenze');
