@@ -8,9 +8,9 @@ use App\Models\trains;
 class PageController extends Controller
 {
     public function index(){
-        $trains= trains::whereYear('giorno_di_partenza',[2024])->orderby('giorno_di_partenza')->get();
-        $train=[];
-        return view('home',compact('trains','train'));
+        $trains= trains::whereYear('departure_day',[2024])->orderby('id')->get();
+
+        return view('home',compact('trains'));
     }
 
     public function treni($id){
@@ -19,8 +19,7 @@ class PageController extends Controller
     }
 
     public function treni_in_partenza(){
-    $train= trains::whereDate('giorno_di_partenza',today())->first();
-
-        return view('home',compact('train'));
+    $holiday_trains= trains::whereDate('departure_day', '>=' ,today())->get();
+        return view('home',compact('holiday_trains'));
     }
 }

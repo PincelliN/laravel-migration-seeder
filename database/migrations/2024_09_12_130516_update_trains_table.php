@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('trains', function (Blueprint $table) {
-            $table->date('giorno_di_partenza')->nullable()->after('stazione_di_arrivo');
+            $table->date('departure_day')->nullable()->after('arrival_station');
+
         });
     }
 
@@ -22,7 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('trains', function (Blueprint $table) {
-            $table->dropColumn('giorno_di_partenza');
+            $table->dropColumn('departure_day');
         });
     }
 };

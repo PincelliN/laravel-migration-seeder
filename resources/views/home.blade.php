@@ -5,7 +5,7 @@
 @dump(Route::currentRouteName())
 @section('content')
     <div class="container my-5">
-        <h1>Treni</h1>
+        <h1 class="text-light">Treni</h1>
         <table class="table">
             <thead>
                 <tr>
@@ -20,54 +20,63 @@
                     <th scope="col">Codice</th>
                     <th scope="col">N. carrozze</th>
                     <th scope="col">Cancellato</th>
-                    <th scope="col">Dettagli</th>
+                    <th scope="col">Biglietti</th>
                 </tr>
             </thead>
             <tbody>
                 @if (Route::currentRouteName() == 'home')
-                    @foreach ($trains as $train)
+                    @forelse ($trains as $train)
                         <tr>
                             <td>{{ $train->id }}</td>
-                            <td>{{ $train->azienda }}</td>
-                            <td>{{ $train->stazione_di_partenza }}</td>
-                            <td>{{ $train->stazione_di_arrivo }}</td>
-                            <td>{{ $train->giorno_di_partenza }}</td>
-                            <td>{{ $train->partenza }}</td>
-                            <td>{{ $train->arrivo }}</td>
-                            <td>{{ $train->binario }}</td>
-                            <td>{{ $train->codice }}</td>
-                            <td>{{ $train->n_carroze }}</td>
-                            <td>{{ $train->cancellato }}</td>
-                            <td><a href="{{ route('train', ['id' => $train->id]) }}" class="btn btn-warning">Biglietto</a>
+                            <td>{{ $train->company }}</td>
+                            <td>{{ $train->departure_station }}</td>
+                            <td>{{ $train->arrival_station }}</td>
+                            <td>{{ $train->departure_day }}</td>
+                            <td>{{ $train->departure }}</td>
+                            <td>{{ $train->arrival }}</td>
+                            <td>{{ $train->binary }}</td>
+                            <td>{{ $train->code }}</td>
+                            <td>{{ $train->num_carriages }}</td>
+                            <td>{{ $train->cancelled == 1 ? 'Cancellato' : '' }}</td>
+                            <td>
+                                <a href="{{ route('train', ['id' => $train->id]) }}" class="btn btn-warning">Biglietto</a>
                             </td>
-                    @endforeach
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="12">Non ci sono treni disponibili</td>
+                        </tr>
+                    @endforelse
                 @else
-                @empty($train)
-                    <h3>Non ci sono treni</h3>
-                @else
-                    <tr>
-                        <td>{{ $train->id }}</td>
-                        <td>{{ $train->azienda }}</td>
-                        <td>{{ $train->stazione_di_partenza }}</td>
-                        <td>{{ $train->stazione_di_arrivo }}</td>
-                        <td>{{ $train->giorno_di_partenza }}</td>
-                        <td>{{ $train->partenza }}</td>
-                        <td>{{ $train->arrivo }}</td>
-                        <td>{{ $train->binario }}</td>
-                        <td>{{ $train->codice }}</td>
-                        <td>{{ $train->n_carroze }}</td>
-                        <td>{{ $train->cancellato }}</td>
-                        <td><a href="{{ route('train', ['id' => $train->id]) }}"class="btn btn-warning">Biglietto</a>
-                        </td>
-                    </tr>
-                @endempty
-            @endif
-        </tbody>
-    </table>
-</div>
+                    @forelse ($holiday_trains as $train)
+                        <tr>
+                            <td>{{ $train->id }}</td>
+                            <td>{{ $train->company }}</td>
+                            <td>{{ $train->departure_station }}</td>
+                            <td>{{ $train->arrival_station }}</td>
+                            <td>{{ $train->departure_day }}</td>
+                            <td>{{ $train->departure }}</td>
+                            <td>{{ $train->arrival }}</td>
+                            <td>{{ $train->binary }}</td>
+                            <td>{{ $train->code }}</td>
+                            <td>{{ $train->num_carriages }}</td>
+                            <td>{{ $train->cancelled == 1 ? 'Cancellato' : '' }}</td>
+                            <td>
+                                <a href="{{ route('train', ['id' => $train->id]) }}" class="btn btn-warning">Biglietto</a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="12">Non ci sono treni disponibili per il periodo selezionato</td>
+                        </tr>
+                    @endforelse
+                @endif
+            </tbody>
+        </table>
+    </div>
 @endsection
 
 
 @section('titlePage')
-home
+    home
 @endsection

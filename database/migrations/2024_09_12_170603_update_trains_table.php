@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('trains', function (Blueprint $table) {
-           $table->tinyInteger('binario',)->after('arrivo');
+           $table->tinyInteger('binary')->after('arrival');
+
         });
     }
 
@@ -22,7 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('trains', function (Blueprint $table) {
-            $table->dropColumn('binario');
+            $table->dropColumn('binary');
         });
     }
 };
